@@ -1,0 +1,31 @@
+
+name: Build and Test HouseRenting
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build_test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build the project
+      run: dotnet build --no-restore
+    - name: Run Project 1 UI tests
+      run: dotnet test TestProject1 --no-build --verbosity normal
+    - name: Run Project 2 UI tests
+      run: dotnet test TestProject2 --no-build --verbosity normal
+    - name: Run Project 3 UI tests
+      run: dotnet test TestProject3 --no-build --verbosity normal    

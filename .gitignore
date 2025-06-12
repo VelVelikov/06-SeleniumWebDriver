@@ -1,2 +1,10 @@
+# include dir at any depth
 **/bin
 **/obj
+# or directly include dirs
+# TestProject1/bin
+# TesProject1/obj
+# TestProject2/bin
+# TesProject2/obj
+# TestProject3/bin
+# TesProject3/obj

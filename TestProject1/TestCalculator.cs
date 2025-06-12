@@ -10,6 +10,7 @@ namespace TestProject1
     public class TestCalculator
     {
         IWebDriver driver;
+        ChromeOptions options;
         IWebElement textBoxFirstNum;
         IWebElement textBoxSecondNum;
         IWebElement dropDownOperation;
@@ -20,10 +21,11 @@ namespace TestProject1
         [OneTimeSetUp]
         public void SetUp()
         {
-            driver = new ChromeDriver();
+            options = new ChromeOptions();
+            options.AddArguments("--headless");
+            driver = new ChromeDriver(options);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Url = "http://softuni-qa-loadbalancer-2137572849.eu-north-1.elb.amazonaws.com/number-calculator/";
-
+            driver.Url = "https://calculatorhtml.onrender.com";
             textBoxFirstNum = driver.FindElement(By.Id("number1"));
             dropDownOperation = driver.FindElement(By.Id("operation"));
             textBoxSecondNum = driver.FindElement(By.Id("number2"));
