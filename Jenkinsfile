@@ -29,7 +29,7 @@ pipeline {
                         sh 'dotnet test TestProject1 --no-build --verbosity normal'
                     }
                 }
-                stage('Project2 UI tests') {
+                stage('Project2 UI tests ') {
                     steps {
                         sh 'dotnet test TestProject2 --no-build --verbosity normal'
                     }
